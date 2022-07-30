@@ -20,7 +20,6 @@ const NewTicket = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(isError)
     if (isError) {
       toast.error(message)
     }

@@ -28,7 +28,6 @@ const Register = () => {
       toast.error(message)
     }
     if (isSuccess || user) {
-      console.log('success', user)
       navigate('/')
     }
 

@@ -13,7 +13,6 @@ const getNotes = asyncHandler(async (req, res) => {
     res.status(401)
     throw new Error('User not found')
   }
-
   const ticket = await Ticket.findById(req.params.ticketId)
 
   if (ticket.user.toString() !== req.user.id) {
@@ -21,7 +20,7 @@ const getNotes = asyncHandler(async (req, res) => {
     throw new Error('User not authorised')
   }
 
-  const notes = await Notes.find({ ticket: req.params.ticketId })
+  const notes = await Note.find({ ticket: req.params.ticketId })
   res.status(200).json(notes)
 })
 
@@ -42,7 +41,7 @@ const addNote = asyncHandler(async (req, res) => {
     throw new Error('User not authorised')
   }
 
-  const note = await Notes.create({
+  const note = await Note.create({
     ticket: req.params.ticketId,
     text: req.body.text,
     isStaff: false,
@@ -51,7 +50,7 @@ const addNote = asyncHandler(async (req, res) => {
   res.status(200).json(note)
 })
 
-module.export = {
+module.exports = {
   getNotes,
   addNote,
 }
