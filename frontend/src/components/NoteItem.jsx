@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const NoteItem = ({ note }) => {
-  const user = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.auth)
   return (
     <div
       className='note'
@@ -11,11 +11,13 @@ const NoteItem = ({ note }) => {
         color: note.isStaff ? '#fff' : '#000',
       }}
     >
-      <h2>
+      <h4>
         Note from {note.isStaff ? <span>Staff</span> : <span>{user.name}</span>}
-      </h2>
+      </h4>
       <p>{note.text}</p>
-      <div className='note-date'>{new Date(note.createdAt('lt-LT'))}</div>
+      <div className='note-date'>
+        {new Date(note.createdAt).toLocaleString('lt-LT')}
+      </div>
     </div>
   )
 }

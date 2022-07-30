@@ -5,7 +5,11 @@ import { toast } from 'react-toastify'
 import { FaPlus, FaTimes } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { getTicket, closeTicket } from '../features/tickets/ticketSlice'
-import { getNotes, reset as notesReset } from '../features/notes/noteSlice'
+import {
+  getNotes,
+  addNote,
+  reset as notesReset,
+} from '../features/notes/noteSlice'
 
 import Modal from 'react-modal'
 
@@ -63,6 +67,7 @@ const Ticket = () => {
 
   const onNoteSubmit = (event) => {
     event.preventDefault()
+    dispatch(addNote({ noteText, ticketId }))
     toggleModal()
   }
 
