@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": "npm start --prefix frontend", 
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuil": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm build --prefix frontend"
   },
   "author": "Justas Sobutas",
   "license": "MIT",
